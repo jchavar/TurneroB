@@ -5,12 +5,8 @@
  */
 package Ventanas;
 
-import Atxy2k.CustomTextField.RestrictedTextField;
 import Metodos.Metodos;
 import Modelo.Persona;
-import com.placeholder.PlaceHolder;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

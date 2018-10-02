@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 /**
  *
  * @author Miguel
@@ -127,8 +126,6 @@ public class Ventana_Principal extends javax.swing.JFrame {
     
     public void Cargar(){
         mTable.setModel(m.tabla());
-        
-
     }
     /**
      * @param args the command line arguments

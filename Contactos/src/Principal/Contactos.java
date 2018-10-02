@@ -12,7 +12,6 @@ import Ventanas.Ventana_Principal;
  * @author Miguel
  */
 public class Contactos {
-
     /**
      * @param args the command line arguments
      */
