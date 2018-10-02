@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import Atxy2k.CustomTextField.RestrictedTextField;
 import Metodos.Metodos;
 import Modelo.Persona;
 import com.placeholder.PlaceHolder;
@@ -29,6 +30,8 @@ public class Ventana_Modificación extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(300,200);
         setTitle("Editando");
+        
+        
     }
 
     /**

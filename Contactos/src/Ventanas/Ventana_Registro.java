@@ -5,6 +5,7 @@
  */
 package Ventanas;
 
+import Atxy2k.CustomTextField.RestrictedTextField;
 import Metodos.Metodos;
 import Modelo.Persona;
 import com.placeholder.PlaceHolder;
@@ -29,6 +30,15 @@ public class Ventana_Registro extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSize(300,200);
         setTitle("Registro");
+        
+        RestrictedTextField name = new RestrictedTextField(jNombre);
+        //name.setOnlyText(true);
+        //name.setLimit(50);
+        RestrictedTextField phone = new RestrictedTextField(jTelefono);
+        phone.setLimit(12);
+        //sphone.setOnlyNums(true);
+        RestrictedTextField mail = new RestrictedTextField(jCorreo);
+        mail.setLimit(360);
         PlaceHolder ph1 = new PlaceHolder(jNombre,"Nombre");
         PlaceHolder ph2 = new PlaceHolder(jTelefono,"Teléfono");
         PlaceHolder ph3 = new PlaceHolder(jCorreo,"Correo");
