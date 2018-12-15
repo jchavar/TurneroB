@@ -14,9 +14,8 @@ public class Asesor extends Persona{
     
     private ArrayList services;
     private int flag;
-    private int libre;
     
-    public Asesor(String nombre, ArrayList services, int flag, int libre) {
+    public Asesor(String nombre, ArrayList services, int flag) {
         super(nombre);
         this.services=services;
         this.flag=flag;
@@ -40,7 +39,7 @@ public class Asesor extends Persona{
      * @return the flag
      */
     public int isFlag() {
-        return getFlag();
+        return flag;
     }
 
     /**
@@ -48,27 +47,6 @@ public class Asesor extends Persona{
      */
     public void setFlag(int flag) {
         this.flag = flag;
-    }
-
-    /**
-     * @return the flag
-     */
-    public int getFlag() {
-        return flag;
-    }
-
-    /**
-     * @return the libre
-     */
-    public int getLibre() {
-        return libre;
-    }
-
-    /**
-     * @param libre the libre to set
-     */
-    public void setLibre(int libre) {
-        this.libre = libre;
     }
     
 }

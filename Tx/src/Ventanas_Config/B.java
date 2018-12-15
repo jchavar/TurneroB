@@ -137,13 +137,15 @@ public class B extends javax.swing.JFrame {
                         for(int i=0; i<combo.size(); i+=3){
                             ArrayList<String> x = new ArrayList<>();
                             x.add(combo.get(i).getSelectedItem().toString()); x.add(combo.get(i+1).getSelectedItem().toString());  x.add(combo.get(i+2).getSelectedItem().toString());
-                            a.add(new Asesor(text.get(i/3).getText(), x, 0));
+                            a.add(new Asesor(text.get(i/3).getText(), x, 0, 0));
                         }
                         mC.escribirConfig2(a,"Asesores.txt");
                         Monitor m = new Monitor();
                         m.setVisible(true);
                         setVisible(false);
                     } catch (FileNotFoundException ex) {
+                        Logger.getLogger(B.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IOException ex) {
                         Logger.getLogger(B.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     

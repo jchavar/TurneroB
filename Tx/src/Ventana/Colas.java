@@ -105,6 +105,8 @@ public class Colas extends javax.swing.JFrame {
             this.setVisible(false);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Colas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Colas.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -1,4 +1,4 @@
-Juan|Depósito|Transacción|Préstamo|0
-Pedro|Transacción|Depósito|--|0
-Wilson|Préstamo|Asesoramiento financiero|--|0
-Lula|Préstamo|Depósito|--|0
+﻿Juan|Depósito|Transacción|Préstamo|1|1
+Pedro|Transacción|Depósito|--|1|0
+Wilson|Préstamo|Asesoramiento financiero|--|1|1
+Lula|Préstamo|Depósito|--|0|0

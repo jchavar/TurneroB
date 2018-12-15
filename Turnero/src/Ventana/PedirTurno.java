@@ -26,7 +26,7 @@ public class PedirTurno extends javax.swing.JFrame {
      * Creates new form Ventana
      * @throws java.io.FileNotFoundException
      */
-    public PedirTurno() throws FileNotFoundException, IOException {
+    public PedirTurno() throws FileNotFoundException {
         initComponents();
         m.listar(jComboBox1);
         setLocationRelativeTo(null);
@@ -223,8 +223,6 @@ public class PedirTurno extends javax.swing.JFrame {
                 try {
                     new PedirTurno().setVisible(true);
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(PedirTurno.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (IOException ex) {
                     Logger.getLogger(PedirTurno.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

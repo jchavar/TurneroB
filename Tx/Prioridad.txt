@@ -1,0 +1,4 @@
+﻿B1|1|Préstamo|2
+﻿C1|1088357118|Transacción|1
+D1|1002798806|﻿Depósito|0
+

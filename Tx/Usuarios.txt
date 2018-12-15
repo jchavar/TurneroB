@@ -5,4 +5,8 @@ D1|Juan|﻿Transacción|0
 D1|1002798806|Asesoramiento financiero|0
 C1|1002798806|Depósito|1
 D1|1|Depósito|0
-D1|22|Depósito|0
+D1|22|Asesoramiento financiero|0
+D1|1002798806|﻿Depósito|0
+C1|1088357118|Transacción|1
+B1|1|Préstamo|2
+B1|2|Préstamo|2

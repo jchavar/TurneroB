@@ -5,6 +5,7 @@
  */
 package Principal;
 
+import Métodos.HiloEjemplo;
 import Ventana.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -21,9 +22,15 @@ public class Principal {
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // TODO code application logic here
-       
+        
         Monitor m = new Monitor();
         m.setVisible(true);
+        
+        /*
+        HiloEjemplo hilo1 = new HiloEjemplo("Hilo Uno");
+        
+        hilo1.start();
+        */
         /*
         Colas c = new Colas();
         c.setVisible(true);*/

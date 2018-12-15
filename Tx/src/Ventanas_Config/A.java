@@ -10,6 +10,7 @@ import Ventana.Monitor;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.*;
 import javax.swing.JOptionPane;
@@ -207,6 +208,8 @@ public class A extends javax.swing.JFrame {
             Monitor m = new Monitor();
             m.setVisible(true);
         } catch (FileNotFoundException ex) {
+            Logger.getLogger(A.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(A.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }//GEN-LAST:event_formWindowClosing

@@ -92,18 +92,6 @@ public class Métodos {
         }
         return aU;
     }
-    public ArrayList<Usuario> leerRegistro() throws FileNotFoundException, IOException{
-        ArrayList<Usuario> aU = new ArrayList<>();
-        File file = new File("Prioridad.txt"); 
-        Scanner lector = new Scanner(file); 
-        while (lector.hasNextLine()) { 
-            String datoBuscado = lector.nextLine(); 
-            StringTokenizer d= new StringTokenizer(datoBuscado,"|");
-            Usuario a = new Usuario(d.nextToken(), d.nextToken(), d.nextToken(),d.nextToken());
-            aU.add(a);
-        }
-        return aU;
-    }
     
     public DefaultTableModel tabla() throws FileNotFoundException, IOException{
         ArrayList<ArrayList<Usuario>> sup = new ArrayList<>();
