@@ -43,6 +43,7 @@ public class Colas extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Estado de Cola");
         setIconImage(getIconImage());
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(

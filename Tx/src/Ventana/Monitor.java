@@ -119,6 +119,7 @@ public class Monitor extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Monitor");
         setIconImage(getIconImage());
 
         sett.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/sett.png"))); // NOI18N
