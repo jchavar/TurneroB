@@ -45,14 +45,14 @@ public class Métodos {
             String datoBuscado = lector.nextLine(); 
             StringTokenizer d= new StringTokenizer(datoBuscado,"|");
             if(d.nextToken().equals(c.getNombre())){
-                pw.println(c.getNombre()+"|"+c.getServices().get(0)+"|"+c.getServices().get(1)+"|"+c.getServices().get(2)+"|"+flag);
+                pw.println(c.getNombre()+"|"+c.getServices().get(0)+"|"+c.getServices().get(1)+"|"+c.getServices().get(2)+"|"+flag+"|"+c.getLibre());
                 ban = true;
             } else{
                 pw.println(datoBuscado);
             }
         }
         if(!ban){
-            pw.println(c.getNombre()+"|"+c.getServices().get(0)+"|"+c.getServices().get(1)+"|"+c.getServices().get(2)+"|"+c.isFlag());
+            pw.println(c.getNombre()+"|"+c.getServices().get(0)+"|"+c.getServices().get(1)+"|"+c.getServices().get(2)+"|"+flag+"|"+c.getLibre());
         }
         pw.close();
         fw.close();

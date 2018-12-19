@@ -13,7 +13,6 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 import java.util.logging.*;
-import javafx.scene.control.ComboBox;
 import javax.swing.*;
 
 /**
@@ -22,7 +21,6 @@ import javax.swing.*;
  */
 public class B extends javax.swing.JFrame {
     Métodos_Config mC = new Métodos_Config();
-    ArrayList<JComboBox> jC = new ArrayList<>();
     ArrayList<JTextField> jT = new ArrayList<>();
     
     /**
@@ -31,8 +29,7 @@ public class B extends javax.swing.JFrame {
      */
     public B() throws FileNotFoundException {
         initComponents();
-        mC.listar(jC);
-        Vector config = mC.leerConfig1("Config.txt");
+        Vector config = mC.leerConfig1("temporal.txt");
         Object ax = config.lastElement();
         int cantP = Integer.valueOf(ax.toString());
         init(cantP);
@@ -98,10 +95,20 @@ public class B extends javax.swing.JFrame {
             y+=35;
         }
         actionPerformad(combo);
-        JButton btn = new JButton("Anterior");
-        btn.setBounds(370, y, 110, 30);
-        JButton btn1 = new JButton("Guardar");
-        btn1.setBounds(485, y, 110, 30);
+        JButton btn = new JButton();
+        btn.setBounds(530, y, 29, 29);
+        btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back.png")));
+        btn.setToolTipText("Atrás");
+        JButton btn1 = new JButton();
+        btn1.setBounds(560, y, 30, 30);
+        btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png")));
+        btn1.setToolTipText("Guardar");
+        JButton btn2 = new JButton();
+        btn2.setBounds(500, y, 30, 30);
+        btn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/0.png")));
+        btn2.setToolTipText("Cancelar");
+        
+        
         //this.setPreferredSize(new Dimension(600, y+50));
         this.setSize(new Dimension(600, y+60));
         mC.listar(combo);
@@ -137,9 +144,13 @@ public class B extends javax.swing.JFrame {
                         for(int i=0; i<combo.size(); i+=3){
                             ArrayList<String> x = new ArrayList<>();
                             x.add(combo.get(i).getSelectedItem().toString()); x.add(combo.get(i+1).getSelectedItem().toString());  x.add(combo.get(i+2).getSelectedItem().toString());
-                            a.add(new Asesor(text.get(i/3).getText(), x, 0, 0));
+                            a.add(new Asesor(text.get(i/3).getText(), x, 1, 0));
                         }
                         mC.escribirConfig2(a,"Asesores.txt");
+                        File f = new File("Config.txt"); 
+                        File file_2 = new File("temporal.txt");
+                        f.delete();
+                        file_2.renameTo(f); 
                         Monitor m = new Monitor();
                         m.setVisible(true);
                         setVisible(false);
@@ -155,14 +166,32 @@ public class B extends javax.swing.JFrame {
         btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e1) {
-                A v = new A();
-                v.setVisible(true);
-                setVisible(false);
+                try {
+                    A v = new A();
+                    v.setVisible(true);
+                    setVisible(false);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(B.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }   
+        });
+        btn2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    File f = new File("temporal.txt");
+                    f.delete();
+                    Monitor m = new Monitor();
+                    m.setVisible(true);
+                    setVisible(false);
+                } catch (IOException ex) {
+                    Logger.getLogger(B.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         });
         add(btn);
         add(btn1);
-        
+        add(btn2);
     }
     
     public Image getIconImage() {

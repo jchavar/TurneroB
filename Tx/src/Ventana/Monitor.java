@@ -120,9 +120,11 @@ public class Monitor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Monitor");
+        setBackground(new java.awt.Color(204, 255, 102));
         setIconImage(getIconImage());
 
         sett.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/sett.png"))); // NOI18N
+        sett.setToolTipText("Configuración");
         sett.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 settActionPerformed(evt);
@@ -138,6 +140,7 @@ public class Monitor extends javax.swing.JFrame {
         });
 
         p1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/P1.png"))); // NOI18N
+        p1.setOpaque(true);
         p1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 p1ActionPerformed(evt);
@@ -231,6 +234,7 @@ public class Monitor extends javax.swing.JFrame {
         c10.setText("jCheckBox10");
 
         inte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png"))); // NOI18N
+        inte.setToolTipText("Activar Pedir Turno");
         inte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inteActionPerformed(evt);
@@ -238,6 +242,7 @@ public class Monitor extends javax.swing.JFrame {
         });
 
         see.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ver.png"))); // NOI18N
+        see.setToolTipText("Ver Estado de Cola");
         see.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 seeActionPerformed(evt);
@@ -347,9 +352,9 @@ public class Monitor extends javax.swing.JFrame {
                         .addComponent(p1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(inte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(sett, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(see, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(see, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(inte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -357,16 +362,16 @@ public class Monitor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void settActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settActionPerformed
-        // TODO add your handling code here:
-        pt.setVisible(false);
-        A a = new A();
-        a.setVisible(true);
-        setVisible(false);
+        try {
+            // TODO add your handling code here:
+            pt.setVisible(false);
+            A a = new A();
+            a.setVisible(true);
+            setVisible(false);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Monitor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_settActionPerformed
-
-    private void c1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_c1ActionPerformed
 
     private void c3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c3ActionPerformed
         // TODO add your handling code here:
@@ -526,10 +531,12 @@ public class Monitor extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(pq==0){
             inte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.png")));
+            inte.setToolTipText("Activar Pedir Turno");
             pq=1;
             pt.setVisible(false);
         } else if(pq==1){
             inte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/0.png")));
+            inte.setToolTipText("Desactivar Pedir Turno");
             pq=0;
             pt.setVisible(true);
         }
@@ -546,6 +553,15 @@ public class Monitor extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_seeActionPerformed
+
+    private void c1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c1ActionPerformed
+        // TODO add your handling code here:
+        if(c1.isSelected()){
+            p1.setToolTipText("Desactivar Asesor");
+        } else{
+            p1.setToolTipText("Activar Asesor");
+        }
+    }//GEN-LAST:event_c1ActionPerformed
 
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().

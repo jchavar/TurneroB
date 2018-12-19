@@ -146,7 +146,7 @@ public class Métodos_Config {
         return asesores;
     }
     public void listar(ArrayList<JComboBox> j) throws FileNotFoundException{
-        Vector x = leerConfig1("Config.txt");
+        Vector x = leerConfig1("temporal.txt");
         x.remove(x.size()-1);
         for(int i=0; i<j.size(); i++){
             j.get(i).removeAllItems();

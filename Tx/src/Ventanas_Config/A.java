@@ -9,10 +9,14 @@ import Métodos.*;
 import Ventana.Monitor;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.*;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,16 +29,38 @@ public class A extends javax.swing.JFrame {
      * Creates new form P
      */
     Métodos_Config mC = new Métodos_Config();
-    public A() {
+    public A() throws FileNotFoundException {
         initComponents();
         init();
     }
 
-    public void init()
+    public void init() throws FileNotFoundException
     {
         Imagen img = new Imagen("/Imagenes/NP.png", 315, 25);
         repaint();
         add(img);
+        File f = new File("temporal.txt");
+        if(f.exists()){
+            Vector config = mC.leerConfig1("temporal.txt");
+            Object ax = config.lastElement();
+            int cant = Integer.valueOf(ax.toString());
+            ArrayList<JCheckBox> combo = new ArrayList<>();
+            combo.add(jCheckBox1);
+            combo.add(jCheckBox2);
+            combo.add(jCheckBox3);
+            combo.add(jCheckBox4);
+            combo.add(jCheckBox5);
+            combo.add(jCheckBox6);
+            for(JCheckBox x: combo){
+                if(config.contains(x.getText())){
+                    x.setSelected(true);
+                }
+            }
+            cantP.setSelectedItem(ax);
+        }
+        
+        
+        
     } 
     
     public ArrayList CheckboxSelect(){
@@ -73,6 +99,7 @@ public class A extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cantP = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Configuración");
@@ -88,6 +115,7 @@ public class A extends javax.swing.JFrame {
         jLabel1.setText("Seleccione los servicios a prestar:");
 
         jCheckBox1.setText("Depósito");
+        jCheckBox1.setFocusPainted(false);
 
         jCheckBox2.setText("Transacción");
 
@@ -108,10 +136,19 @@ public class A extends javax.swing.JFrame {
 
         cantP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
-        jButton1.setText("Siguiente");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/foll.png"))); // NOI18N
+        jButton1.setToolTipText("Siguiente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/0.png"))); // NOI18N
+        jButton2.setToolTipText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -142,12 +179,14 @@ public class A extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -166,8 +205,10 @@ public class A extends javax.swing.JFrame {
                     .addComponent(cantP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -187,7 +228,7 @@ public class A extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No ha seleccionado una cantidad de prestadores de servicio. Por favor seleccione una de las opciones.", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else{
             try {
-                mC.escribirConfig(jcb, cantP.getSelectedItem().toString(),"Config.txt");
+                mC.escribirConfig(jcb, cantP.getSelectedItem().toString(),"temporal.txt");
                 B b = new B();
                 b.setVisible(true);
                 setVisible(false);
@@ -214,6 +255,19 @@ public class A extends javax.swing.JFrame {
             Logger.getLogger(A.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }//GEN-LAST:event_formWindowClosing
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            // TODO add your handling code here:
+            setVisible(false);
+            Monitor m = new Monitor();
+            m.setVisible(true);
+            File f = new File("temporal.txt");
+            f.delete();
+        } catch (IOException ex) {
+            Logger.getLogger(A.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,7 +300,11 @@ public class A extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new A().setVisible(true);
+                try {
+                    new A().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(A.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -254,6 +312,7 @@ public class A extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cantP;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
