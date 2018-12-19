@@ -20,8 +20,9 @@ public class Métodos_Config {
     public void escribirConfig(ArrayList a, String b, String file){
         try {
             File k = new File(file);
-            if(k.exists())
+            if(k.exists()){
                 k.delete();
+            }
             FileWriter fw = new FileWriter(file,true);
             BufferedWriter bw = new BufferedWriter(fw);
             try (PrintWriter pw = new PrintWriter(bw)) {
@@ -40,7 +41,7 @@ public class Métodos_Config {
             File k = new File(file);
             if(k.exists())
                 k.delete();
-            FileWriter fw = new FileWriter("Asesores.txt",true);
+            FileWriter fw = new FileWriter(file,true);
             BufferedWriter bw = new BufferedWriter(fw);
             try (PrintWriter pw = new PrintWriter(bw)) {
                 for(Asesor c:a){

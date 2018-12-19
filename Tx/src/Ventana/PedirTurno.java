@@ -29,6 +29,10 @@ public class PedirTurno extends javax.swing.JFrame {
     public PedirTurno() throws FileNotFoundException, IOException {
         initComponents();
         m.listar(jComboBox1);
+        Vector config = mC.leerConfig1("Config.txt");
+        Object ax = config.lastElement();
+        int cantP = Integer.valueOf(ax.toString());
+        //activarHilos(cantP);
         setLocationRelativeTo(null);
     }
 
@@ -85,6 +89,11 @@ public class PedirTurno extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.setPreferredSize(new java.awt.Dimension(200, 20));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Seleccione el tipo de servicio que necesita:");
 
@@ -165,11 +174,20 @@ public class PedirTurno extends javax.swing.JFrame {
             Usuario u = new Usuario(null, jCodigo.getText(), null, null);
             try {
                 c.AsignarTurno(jCodigo.getText(), jComboBox1.getSelectedItem().toString(), CheckboxSelect(buttonGroup1));
+                buttonGroup1.clearSelection();
+                jComboBox1.setSelectedIndex(0);
+                jCodigo.setText("");
+                jCodigo.setFocusable(true);
+                jTurno.setFocusPainted(false);
             } catch (IOException ex) {
                 Logger.getLogger(PedirTurno.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_jTurnoActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     public String CheckboxSelect(ButtonGroup buttonGroup){
         for(Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();){

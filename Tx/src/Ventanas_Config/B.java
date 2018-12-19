@@ -212,7 +212,6 @@ public class B extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Configuración");
         setIconImage(getIconImage());
-        setMaximumSize(new java.awt.Dimension(600, 400));
         setMinimumSize(new java.awt.Dimension(600, 100));
         setResizable(false);
 
@@ -250,6 +249,12 @@ public class B extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(B.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         

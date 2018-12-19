@@ -1,4 +1,5 @@
-﻿B1|1|Préstamo|2
-﻿C1|1088357118|Transacción|1
-D1|1002798806|﻿Depósito|0
-
+A1|asdas|﻿Depósito|3
+B1|Ajshda|Asesoramiento financiero|2
+C1|Pedro|Préstamo|1
+D1|Juan|﻿Depósito|0
+D2|asda|﻿Depósito|0

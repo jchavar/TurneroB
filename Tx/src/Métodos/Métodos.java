@@ -52,7 +52,7 @@ public class Métodos {
             }
         }
         if(!ban){
-            pw.println(c.getNombre()+"|"+c.getServices().get(0)+"|"+c.getServices().get(1)+"|"+c.getServices().get(2)+"|"+flag+"|"+c.getLibre());
+            pw.println(c.getNombre()+"|"+c.getServices().get(0)+"|"+c.getServices().get(1)+"|"+c.getServices().get(2)+"|"+c.isFlag());
         }
         pw.close();
         fw.close();
@@ -79,7 +79,7 @@ public class Métodos {
     
     public ArrayList<Usuario> leerRegistro(String datoAmodificar) throws FileNotFoundException, IOException{
         ArrayList<Usuario> aU = new ArrayList<>();
-        File file = new File("Usuarios.txt"); 
+        File file = new File("Prioridad.txt"); 
         Scanner lector = new Scanner(file); 
         while (lector.hasNextLine()) { 
             String datoBuscado = lector.nextLine(); 
@@ -95,12 +95,18 @@ public class Métodos {
     public ArrayList<Usuario> leerRegistro() throws FileNotFoundException, IOException{
         ArrayList<Usuario> aU = new ArrayList<>();
         File file = new File("Prioridad.txt"); 
-        Scanner lector = new Scanner(file); 
-        while (lector.hasNextLine()) { 
-            String datoBuscado = lector.nextLine(); 
-            StringTokenizer d= new StringTokenizer(datoBuscado,"|");
-            Usuario a = new Usuario(d.nextToken(), d.nextToken(), d.nextToken(),d.nextToken());
-            aU.add(a);
+        if(file.exists()){
+            Scanner lector = new Scanner(file); 
+            while (lector.hasNextLine()) { 
+                String datoBuscado = lector.nextLine(); 
+                if(datoBuscado!=null){
+                    StringTokenizer d= new StringTokenizer(datoBuscado,"|");
+                    Usuario a = new Usuario(d.nextToken(), d.nextToken(), d.nextToken(),d.nextToken());
+                    aU.add(a);
+                }
+                
+            }
+            lector.close();
         }
         return aU;
     }
