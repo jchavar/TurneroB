@@ -96,7 +96,7 @@ public class B extends javax.swing.JFrame {
         }
         actionPerformad(combo);
         JButton btn = new JButton();
-        btn.setBounds(530, y, 29, 29);
+        btn.setBounds(525, y, 30, 30);
         btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back.png")));
         btn.setToolTipText("Atrás");
         JButton btn1 = new JButton();
@@ -104,7 +104,7 @@ public class B extends javax.swing.JFrame {
         btn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/save.png")));
         btn1.setToolTipText("Guardar");
         JButton btn2 = new JButton();
-        btn2.setBounds(500, y, 30, 30);
+        btn2.setBounds(490, y, 30, 30);
         btn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/0.png")));
         btn2.setToolTipText("Cancelar");
         
